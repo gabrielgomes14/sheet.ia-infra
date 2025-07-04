@@ -1,0 +1,26 @@
+# Ajusta Deployment do backend
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: backend
+          image: gomes025/machine-learning_ecar-api:prod   # tag de prod
+
+---
+# Ajusta Deployment do frontend
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: frontend
+          image: gomes025/machine-learning_ecar-front:prod  # tag de prod

@@ -1,0 +1,20 @@
+[
+  { "op": "remove", "path": "/spec/template/spec/volumes" },
+  { "op": "remove", "path": "/spec/template/spec/containers/0/volumeMounts" },
+  {
+    "op": "add",
+    "path": "/spec/template/spec/volumes",
+    "value": [
+      { "name": "data-volume",    "emptyDir": {} },
+      { "name": "modelos-volume", "emptyDir": {} }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/spec/template/spec/containers/0/volumeMounts",
+    "value": [
+      { "name": "data-volume",    "mountPath": "/app/data" },
+      { "name": "modelos-volume", "mountPath": "/app/modelos_hodometro" }
+    ]
+  }
+]

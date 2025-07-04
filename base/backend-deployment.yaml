@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: gomes025/machine-learning_ecar-api:latest
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - name: data-volume
+              mountPath: /app/data
+            - name: modelos-volume
+              mountPath: /app/modelos_hodometro
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: pvc-data
+        - name: modelos-volume
+          persistentVolumeClaim:
+            claimName: pvc-modelos

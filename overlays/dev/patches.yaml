@@ -1,0 +1,18 @@
+# overlays/dev/patches.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  template:
+    spec:
+      containers:
+        - name: backend
+          # Use a sua imagem dev no Docker Hub
+          image: gomes025/machine-learning_ecar-api:latest
+      # Substitui volumes persistentes por emptyDir só no dev
+      volumes:
+        - name: data-volume
+          emptyDir: {}
+        - name: modelos-volume
+          emptyDir: {}
