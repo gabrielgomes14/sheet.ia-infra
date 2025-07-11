@@ -8,11 +8,26 @@ spec:
   resources:
     requests:
       storage: 1Gi
+
 ---
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: pvc-modelos
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-postgres
 spec:
   accessModes:
     - ReadWriteOnce

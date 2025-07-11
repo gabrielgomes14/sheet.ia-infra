@@ -28,5 +28,5 @@ spec:
         configMap:
           name: frontend-nginx-config
           items:
-          - key: frontend-default.conf
+          - key: default.conf   # <--- Corrigido aqui
             path: default.conf

@@ -19,6 +19,17 @@ spec:
           image: gomes025/machine-learning_ecar-api:latest
           ports:
             - containerPort: 8000
+          env:
+            - name: POSTGRES_HOST
+              value: postgres-service
+            - name: POSTGRES_DB
+              value: hodometro_db
+            - name: POSTGRES_USER
+              value: user
+            - name: POSTGRES_PASSWORD
+              value: password
+            - name: POSTGRES_PORT
+              value: "5432"
           volumeMounts:
             - name: data-volume
               mountPath: /app/data
